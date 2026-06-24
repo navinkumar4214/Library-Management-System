@@ -5,6 +5,33 @@ const auth = require("../middleware/auth");
 
 const router = express.Router();
 
+router.get("/", auth, async (req, res) => {
+  try {
+    const transactions = await pool.query(
+      `SELECT
+        t.id,
+        b.title AS book_title,
+        m.name AS member_name,
+        t.issue_date,
+        t.return_date,
+        t.status
+      FROM transactions t
+      JOIN books b ON t.book_id = b.id
+      JOIN members m ON t.member_id = m.id
+      ORDER BY t.id DESC`
+    );
+
+    res.json(transactions.rows);
+
+  } catch (err) {
+    console.error(err.message);
+
+    res.status(500).json({
+      message: "Server Error"
+    });
+  }
+});
+
 router.post("/issue", auth, async (req, res) => {
   try {
     const { book_id, member_id } = req.body;
