@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 function Transactions() {
   const [transactions, setTransactions] = useState([]);
@@ -124,7 +125,8 @@ function Transactions() {
 };
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
+        <Navbar />
       <h1>Transactions</h1>
 
       <select
@@ -166,7 +168,11 @@ function Transactions() {
 <br />
 <br />
 
-      <table border="1">
+      <table
+        border="1"
+        cellPadding="10"
+        style={{ borderCollapse: "collapse" }}
+      >
         <thead>
           <tr>
             <th>ID</th>

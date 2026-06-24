@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 function Books() {
   const [books, setBooks] = useState([]);
@@ -129,7 +130,8 @@ const updateBook = async () => {
 };
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
+        <Navbar/>
       <h1>Books Page</h1>
 
       <div>
@@ -161,7 +163,11 @@ const updateBook = async () => {
 
 <br />
 
-      <table border="1">
+      <table
+        border="1"
+        cellPadding="10"
+        style={{ borderCollapse: "collapse" }}
+      >
         <thead>
           <tr>
             <th>ID</th>

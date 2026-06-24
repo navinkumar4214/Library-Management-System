@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 function Members() {
   const [members, setMembers] = useState([]);
@@ -113,7 +114,8 @@ const deleteMember = async (id) => {
 };
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
+        <Navbar />
       <h1>Members Page</h1>
 
       <input
@@ -134,7 +136,11 @@ const deleteMember = async (id) => {
         {editId ? "Update Member" : "Add Member"}
       </button>
 
-      <table border="1">
+      <table
+        border="1"
+        cellPadding="10"
+        style={{ borderCollapse: "collapse" }}
+      >
         <thead>
           <tr>
             <th>ID</th>

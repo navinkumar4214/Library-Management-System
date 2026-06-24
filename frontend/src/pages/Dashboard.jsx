@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "../components/Navbar";
 
 function Dashboard() {
   const [stats, setStats] = useState({
@@ -33,15 +34,17 @@ function Dashboard() {
   }, []);
 
   return (
-    <div>
-      <h1>Library Dashboard</h1>
+  <div style={{ padding: "20px" }}>
+    <Navbar />
 
-      <h3>Total Books: {stats.totalBooks}</h3>
-      <h3>Total Members: {stats.totalMembers}</h3>
-      <h3>Issued Books: {stats.issuedBooks}</h3>
-      <h3>Available Books: {stats.availableBooks}</h3>
-    </div>
-  );
+    <h1>Library Dashboard</h1>
+
+    <h3>Total Books: {stats.totalBooks}</h3>
+    <h3>Total Members: {stats.totalMembers}</h3>
+    <h3>Issued Books: {stats.issuedBooks}</h3>
+    <h3>Available Books: {stats.availableBooks}</h3>
+  </div>
+);
 }
 
 export default Dashboard;
